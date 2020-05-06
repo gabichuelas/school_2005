@@ -21,6 +21,11 @@ class School
     # for a later iteration :)
   end
 
+  def convert_end_time_to_clock_time
+    clock_time = self.end_time.delete(":00").to_i - 12
+    clock_time.to_s + ":00"
+  end
+
   def is_full_time?
     @hours_in_school_day > 4
     # could write this as an if/else,
