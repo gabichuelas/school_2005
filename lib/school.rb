@@ -12,9 +12,8 @@ class School
   end
 
   def end_time
-    finish = @start_time.delete(":00").to_i + @hours_in_school_day
+    "#{@start_time.to_i + @hours_in_school_day}:00"
 
-    finish.to_s + ":00"
     # I know this doesn't work if
     # classes DIDN'T start at the top
     # of the hour (00), but that's
@@ -22,8 +21,13 @@ class School
   end
 
   def convert_end_time_to_clock_time
-    clock_time = self.end_time.delete(":00").to_i - 12
-    clock_time.to_s + ":00"
+    # simplified this method bc to_i
+    # already removes the :00
+    if end_time.to_i > 12
+      "#{end_time.to_i - 12}:00"
+    elsif end_time.to_i <= 12
+      "#{@hours_in_school_day + @start_time.to_i}:00"
+    end
   end
 
   def is_full_time?
