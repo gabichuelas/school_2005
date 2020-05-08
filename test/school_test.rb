@@ -56,8 +56,10 @@ class SchoolTest < Minitest::Test
   #Iteration 3 Tests:
   def test_is_it_full_time
     school = School.new('9:00', 7)
+    school2 = School.new('9:00', 3)
 
     assert school.is_full_time?
+    refute school2.is_full_time?
   end
 
   def test_it_can_standardize_student_list
